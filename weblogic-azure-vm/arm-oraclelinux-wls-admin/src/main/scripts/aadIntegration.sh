@@ -440,6 +440,11 @@ CURRENT_DATE=`date +%s`
 MIN_CERT_VALIDITY="1"
 
 validateInput
+
+# Executing parse and validate certificates to ensure there are no certificates issues
+# If any certificates issues then it will be cuaght earlier
+parseLDAPCertificate
+
 createTempFolder
 echo "check status of admin server"
 wait_for_admin
@@ -449,7 +454,6 @@ enableTLSv12onJDK8
 createAADProvider_model
 createSSL_model
 mapLDAPHostWithPublicIP
-parseLDAPCertificate
 importAADCertificate
 importAADCertificateIntoWLSCustomTrustKeyStore
 configureSSL
