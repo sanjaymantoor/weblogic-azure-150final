@@ -208,7 +208,7 @@ function verifyCertValidity()
     MIN_CERT_VALIDITY=$3
     VALIDITY=$(($CURRENT_DATE + ($MIN_CERT_VALIDITY*24*60*60)))
 	
-	. $oracleHome/oracle_common/common/bin/setWlstEnv.sh
+	. /u01/app/wls/install/oracle/middleware/oracle_home/oracle_common/common/bin/setWlstEnv.sh
 	
 	echo "Verifying $CERT_FILE is valid at least $MIN_CERT_VALIDITY day from the deployment time"
 	if [ $VALIDITY -le $CURRENT_DATE ];
