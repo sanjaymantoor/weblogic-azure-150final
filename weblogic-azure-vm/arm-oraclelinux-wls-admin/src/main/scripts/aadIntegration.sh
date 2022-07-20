@@ -442,6 +442,8 @@ MIN_CERT_VALIDITY="1"
 
 validateInput
 
+echo "Oracle Home set to $oracleHome"
+
 # Executing parse and validate certificates to ensure there are no certificates issues
 # If any certificates issues then it will be cuaght earlier
 parseLDAPCertificate
