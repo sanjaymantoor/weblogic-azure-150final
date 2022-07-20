@@ -218,7 +218,8 @@ function verifyCertValidity()
 	
 	# Check whether CERT_FILE supplied can be opened for reading
 	# Redirecting as no need to display the contents
-	sudo $JAVA_HOME/bin/keytool -printcert -file $CERT_FILE > /dev/null 2>&1
+	echo ${JAVA_HOME}/bin/keytool -printcert -file $CERT_FILE
+	sudo ${JAVA_HOME}/bin/keytool -printcert -file $CERT_FILE > /dev/null 2>&1
 	
 	if [ $? != 0 ];
 	then
@@ -226,7 +227,7 @@ function verifyCertValidity()
 		exit 1
 	fi
 	
-	VALIDITY_PERIOD=`sudo $JAVA_HOME/bin/keytool -printcert -file $CERT_FILE | grep Valid`
+	VALIDITY_PERIOD=`sudo ${JAVA_HOME}/bin/keytool -printcert -file $CERT_FILE | grep Valid`
 	echo "Certificate $CERT_FILE is \"$VALIDITY_PERIOD\""
 	CERT_UNTIL_DATE=`echo $VALIDITY_PERIOD | awk -F'until:|\r' '{print $2}'`
 	CERT_UNTIL_SECONDS=`date -d "$CERT_UNTIL_DATE" +%s`
