@@ -219,7 +219,6 @@ function verifyCertValidity()
 	
 	# Check whether CERT_FILE supplied can be opened for reading
 	# Redirecting as no need to display the contents
-	echo ${JAVA_HOME}/bin/keytool -printcert -file $CERT_FILE
 	sudo ${JAVA_HOME}/bin/keytool -printcert -file $CERT_FILE > /dev/null 2>&1
 	
 	if [ $? != 0 ];
