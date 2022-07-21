@@ -208,7 +208,7 @@ function verifyCertValidity()
     MIN_CERT_VALIDITY=$3
     VALIDITY=$(($CURRENT_DATE + ($MIN_CERT_VALIDITY*24*60*60)))
 	
-	. /u01/app/wls/install/oracle/middleware/oracle_home/oracle_common/common/bin/setWlstEnv.sh
+	. $oracleHome/oracle_common/common/bin/setWlstEnv.sh
 	
 	echo "Verifying $CERT_FILE is valid at least $MIN_CERT_VALIDITY day from the deployment time"
 	if [ $VALIDITY -le $CURRENT_DATE ];
@@ -430,13 +430,6 @@ then
     customTrustKeyStoreType=$(echo "$customTrustKeyStoreType" | base64 --decode)
 fi
 
-printf "wlsUserName=$wlsUserName\n wlsPassword=$wlsPassword \n wlsDomainName=$wlsDomainName \n adProviderName=$adProviderName \n adServerHost=$adServerHost \n"
-printf "adServerPort=$adServerPort \n adPrincipal=$adPrincipal \n adPassword=$adPassword \n adGroupBaseDN=$adGroupBaseDN \n adUserBaseDN=$adUserBaseDN \n"
-printf "oracleHome=$oracleHome \n wlsAdminHost=$wlsAdminHost \n wlsAdminPort=$wlsAdminPort \n wlsADSSLCer=$wlsADSSLCer \n wlsLDAPPublicIP=$wlsLDAPPublicIP\n"
-printf "wlsAdminServerName=$wlsAdminServerName \n isCustomSSLEnabled=$isCustomSSLEnabled \n customTrustKeyStorePassPhrase=$customTrustKeyStorePassPhrase \n"
-printf "customTrustKeyStoreType=$customTrustKeyStoreType"
-
-
 wlsAdminURL=$wlsAdminHost:$wlsAdminPort
 
 LDAP_USER_NAME='sAMAccountName'
@@ -453,8 +446,6 @@ CURRENT_DATE=`date +%s`
 MIN_CERT_VALIDITY="1"
 
 validateInput
-
-echo "Oracle Home set to $oracleHome"
 
 # Executing parse and validate certificates to ensure there are no certificates issues
 # If any certificates issues then it will be cuaght earlier
