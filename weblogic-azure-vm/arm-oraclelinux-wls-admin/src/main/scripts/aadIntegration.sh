@@ -439,6 +439,7 @@ SCRIPT_PWD=`pwd`
 USER_ORACLE="oracle"
 GROUP_ORACLE="oracle"
 DOMAIN_PATH="/u01/domains"
+
 # Used for certificate expiry validation
 CURRENT_DATE=`date +%s`
 # Supplied certificate to have minimum days validity for the deployment
