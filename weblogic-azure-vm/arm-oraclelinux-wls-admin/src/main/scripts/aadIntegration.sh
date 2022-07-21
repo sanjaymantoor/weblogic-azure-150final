@@ -415,7 +415,11 @@ function createTempFolder()
 
 #main
 
-read wlsUserName wlsPassword wlsDomainName adProviderName adServerHost adServerPort adPrincipal adPassword adGroupBaseDN adUserBaseDN oracleHome wlsAdminHost wlsAdminPort wlsADSSLCer wlsLDAPPublicIP wlsAdminServerName wlsDomainPath isCustomSSLEnabled customTrustKeyStorePassPhrase customTrustKeyStoreType
+read wlsUserName wlsPassword wlsDomainName adProviderName adServerHost adServerPort adPrincipal adPassword adUserBaseDN adGroupBaseDN oracleHome wlsAdminHost wlsAdminPort wlsADSSLCer wlsLDAPPublicIP wlsAdminServerName wlsDomainPath isCustomSSLEnabled customTrustKeyStorePassPhrase customTrustKeyStoreType
+
+adPrincipal=$(echo "$adPrincipal" | base64 --decode)
+adUserBaseDN=$(echo "$adUserBaseDN" | base64 --decode)
+adGroupBaseDN=$(echo "$adGroupBaseDN" | base64 --decode)
 
 printf "wlsUserName=$wlsUserName\n wlsPassword=$wlsPassword \n wlsDomainName=$wlsDomainName \n adProviderName=$adProviderName \n adServerHost=$adServerHost \n"
 printf "adServerPort=$adServerPort \n adPrincipal=$adPrincipal \n adPassword=$adPassword \n adGroupBaseDN=$adGroupBaseDN \n adUserBaseDN=$adUserBaseDN \n"
