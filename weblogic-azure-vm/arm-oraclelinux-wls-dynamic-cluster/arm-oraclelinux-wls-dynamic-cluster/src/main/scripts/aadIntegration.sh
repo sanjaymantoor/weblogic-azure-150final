@@ -544,7 +544,6 @@ then
 else
     createTempFolder
     mapLDAPHostWithPublicIP
-    parseLDAPCertificate
     importAADCertificate
     importAADCertificateIntoWLSCustomTrustKeyStore
     cleanup

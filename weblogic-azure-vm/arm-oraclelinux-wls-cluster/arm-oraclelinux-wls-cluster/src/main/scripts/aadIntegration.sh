@@ -546,7 +546,6 @@ then
 else
     cleanup
     mapLDAPHostWithPublicIP
-    parseLDAPCertificate
     importAADCertificate
     importAADCertificateIntoWLSCustomTrustKeyStore
     cleanup
