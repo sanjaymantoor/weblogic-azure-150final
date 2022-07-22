@@ -1003,9 +1003,13 @@ SCRIPT_PWD=`pwd`
 CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BASE_DIR="$(readlink -f ${CURR_DIR})"
 
+# Used for certificate expiry validation
+CURRENT_DATE=`date +%s`
+# Supplied certificate to have minimum days validity for the deployment
+# In this case set for 1 day
+MIN_CERT_VALIDITY="1"
+
 read wlsDomainName wlsUserName wlsPassword managedServerPrefix indexValue vmNamePrefix maxDynamicClusterSize dynamicClusterSize adminVMName oracleHome storageAccountName storageAccountKey mountpointPath isHTTPAdminListenPortEnabled customDNSNameForAdminServer dnsLabelPrefix location isCustomSSLEnabled customIdentityKeyStoreData customIdentityKeyStorePassPhrase customIdentityKeyStoreType customTrustKeyStoreData customTrustKeyStorePassPhrase customTrustKeyStoreType serverPrivateKeyAlias serverPrivateKeyPassPhrase
-
-
 
 DOMAIN_PATH="/u01/domains"
 CUSTOM_HOSTNAME_VERIFIER_HOME="/u01/app/custom-hostname-verifier"
